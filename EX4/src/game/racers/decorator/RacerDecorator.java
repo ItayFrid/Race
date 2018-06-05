@@ -1,5 +1,12 @@
 package game.racers.decorator;
 
-public class RacerDecorator {
+import game.racers.IRacer;
 
+public abstract class RacerDecorator  {
+
+	protected IRacer decoratedRacer;
+
+	public RacerDecorator(IRacer racer) {
+		this.decoratedRacer = racer;
+	}
 }
