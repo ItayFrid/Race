@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  * 			305437774	305360653
  * @see GUI Class, RightPanel Class
  */
-/*AhshavTiroShedsfsdfsdf*/
+
 public class ArenaBuilderPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
