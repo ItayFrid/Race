@@ -15,7 +15,10 @@ public class ColoredRacer extends RacerDecorator {
 	
 	public ColoredRacer(IRacer racer, Color color) {
 		super(racer);
-		this.decoratedRacer.addAttribute(ATTRIBUTENAME, color);
+		addAttribute(ATTRIBUTENAME,color);
 	}
 
+	public void addAttribute(String key,Object value) {
+		this.decoratedRacer.addAttribute(key, value);
+	}
 }

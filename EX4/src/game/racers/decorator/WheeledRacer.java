@@ -21,7 +21,10 @@ public class WheeledRacer extends RacerDecorator {
 	 */
 	public WheeledRacer(IRacer racer, int numOfWheels) {
 		super(racer);
-		this.decoratedRacer.addAttribute(ATTRIBUTENAME, numOfWheels);
+		addAttribute(ATTRIBUTENAME, numOfWheels);
 	}
 	
+	public void addAttribute(String key,Object value) {
+		this.decoratedRacer.addAttribute(key, value);
+	}
 }

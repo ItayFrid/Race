@@ -240,7 +240,7 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 	 * This method prints out a racer's details
 	 */
 	public void introduce() {
-		System.out.print(this.describeRacer());
+		System.out.println(this.describeRacer());
 	}
 	
 	/**
@@ -258,8 +258,10 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 		String s=" ";
 		Set<String> keys = attributes.keySet();
 		for(String key : keys) {
+			s+=key;
+			s+=": ";
 			s+=attributes.get(key);
-			s+=" ";
+			s+=", ";
 		}
 		return s;
 	}
