@@ -2,7 +2,7 @@ package game.racers.land;
 
 import game.racers.IWheeled;
 import game.racers.Racer;
-import game.racers.Wheeled;
+import game.racers.decorator.Wheeled;
 import utilities.EnumContainer.Color;
 import utilities.EnumContainer.Engine;
 

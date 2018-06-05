@@ -1,7 +1,7 @@
 package game.racers.air;
 import game.racers.IWheeled;
 import game.racers.Racer;
-import game.racers.Wheeled;
+import game.racers.decorator.Wheeled;
 import utilities.EnumContainer.Color;
 /**
  * This is the Airplane racer class
