@@ -1,4 +1,5 @@
 package game.racers;
+import java.util.Hashtable;
 import java.util.Observable;
 
 import game.arenas.Arena;
@@ -15,7 +16,7 @@ import utilities.Point;
  * 			 305437774 305360653
  */
 
-public abstract class Racer extends Observable implements Runnable {
+public abstract class Racer extends Observable implements Runnable,IRacer {
 
 	/**
 	 * The following are the class data members
@@ -31,6 +32,7 @@ public abstract class Racer extends Observable implements Runnable {
 	private double failureProbability;
 	private Color color;
 	private Mishap malfunction;
+	private Hashtable<String,Object> attributes;
 	
 	private static int numOfRacers = 0;		//Keeping track of serial numbers
 	private static final double DEFAULT_PROBABILITY = 0.05;
@@ -54,6 +56,7 @@ public abstract class Racer extends Observable implements Runnable {
 		this.setFailureProbability(DEFAULT_PROBABILITY);
 		this.setColor(color);
 		this.setMalfunction(null);
+		this.attributes = new Hashtable<String,Object>();
 	}
 	
 	/**
