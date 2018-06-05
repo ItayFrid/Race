@@ -45,7 +45,7 @@ public abstract class Racer extends Observable implements Runnable {
 	public Racer(String name, double maxSpeed, double acceleration, Color color){
 		this.setSerialNumber();
 		this.setName(name);
-		this.setCurrentLocation(new Point(0, 0));	//TODO: MIN_Y_GAP
+		this.setCurrentLocation(new Point(0, 0));
 		this.setFinish(null);
 		this.arena = null;
 		this.setMaxSpeed(maxSpeed);

@@ -33,7 +33,7 @@ public class LandArena extends Arena {
 	 * This is the default constructor
 	 */
 	public LandArena() {
-		super(DEFAULT_LENGTH, DEFAULT_MAX_RACERS, DEFAULT_FRICTION); //TODO: Check about default length!
+		super(DEFAULT_LENGTH, DEFAULT_MAX_RACERS, DEFAULT_FRICTION);
 		this.setCoverage(DEFAULT_COVERAGE);
 		this.setSurface(DEFAULT_LANDSURFACE);
 	}
