@@ -1,28 +1,21 @@
 package game.racers.air;
-import game.racers.IWheeled;
+
 import game.racers.Racer;
-import game.racers.decorator.Wheeled;
-import utilities.EnumContainer.Color;
+
 /**
  * This is the Airplane racer class
  * @author Idan Aharon, Itay Fridman
  * 			 305437774 305360653
- * @see AerialRacer, Racer, Wheeled
+ * @see AerialRacer, Racer
  */
-public class Airplane extends Racer implements AerialRacer, IWheeled { 
-	/**
-	 * This is the class data members
-	 */
-	private Wheeled wheels;
+public class Airplane extends Racer implements AerialRacer { 
+	
 	
 	/**
 	 * These are class defaults
 	 */
 	private final static double DEFAULT_MAXSPEED = 885;
 	private final static double DEFAULT_ACCLERATION = 100;
-	private final static Color DEFAULT_COLOR = Color.BLACK;
-	private final static int DEFAULT_NUMOFWHEELS = 3;
-
 	
 	
 	/**
@@ -30,8 +23,7 @@ public class Airplane extends Racer implements AerialRacer, IWheeled {
 	 * This is the default class constructor
 	 */
 	public Airplane() {
-		super(null, DEFAULT_MAXSPEED, DEFAULT_ACCLERATION, DEFAULT_COLOR);
-		this.wheels = new Wheeled(DEFAULT_NUMOFWHEELS);
+		super(null, DEFAULT_MAXSPEED, DEFAULT_ACCLERATION);
 	}
 	
 	/**
@@ -42,26 +34,22 @@ public class Airplane extends Racer implements AerialRacer, IWheeled {
 	 * @param color
 	 * @param numOfWheels
 	 */
-	public Airplane(String name, double maxSpeed, double acceleration, Color color, int numOfWheels) {
-		super(name, maxSpeed, acceleration, color);
-		if(numOfWheels == 0)
-			this.wheels = new Wheeled(DEFAULT_NUMOFWHEELS);
-		else
-			this.wheels = new Wheeled(numOfWheels);
+	public Airplane(String name, double maxSpeed, double acceleration) {
+		super(name, maxSpeed, acceleration);
 		if(!(this.setMaxSpeed(maxSpeed)))
 			this.setMaxSpeed(DEFAULT_MAXSPEED);
 		if(!(this.setAcceleration(acceleration)))
 			this.setAcceleration(DEFAULT_ACCLERATION);
-		if(!(this.wheels.setNumOfWheels(numOfWheels)))
-			this.wheels.setNumOfWheels(DEFAULT_NUMOFWHEELS);
 	}
 
 	/**
 	 * This function returns a string describing specific racer details
 	 */
 	@Override
+	
 	public String describeSpecific() {
-		return "Number of wheels: " + this.wheels.getNumOfWheels() + "\n";
+		//TODO: Change describeSpecific()
+		return "Number of wheels: " /*+ this.wheels.getNumOfWheels() + "\n"*/;
 	}
  
 	/**
@@ -70,19 +58,6 @@ public class Airplane extends Racer implements AerialRacer, IWheeled {
 	@Override
 	public String className() {
 		return "Airplane";
-	}
-
-	/**
-	 * These are class getters & setters
-	 * @return
-	 */
-	public Wheeled getWheels() {
-		return wheels;
-	}
-
-	public boolean setWheels(Wheeled wheels) {
-		this.wheels = wheels;
-		return true;
 	}
 
 }

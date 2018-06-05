@@ -30,7 +30,7 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 	private double acceleration;
 	private double currentSpeed;
 	private double failureProbability;
-	private Color color;
+
 	private Mishap malfunction;
 	private Hashtable<String,Object> attributes;
 	
@@ -44,7 +44,7 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 	 * @param acceleration
 	 * @param color
 	 */
-	public Racer(String name, double maxSpeed, double acceleration, Color color){
+	public Racer(String name, double maxSpeed, double acceleration){
 		this.setSerialNumber();
 		this.setName(name);
 		this.setCurrentLocation(new Point(0, 0));
@@ -54,7 +54,6 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 		this.setAcceleration(acceleration);
 		this.setCurrentSpeed(0);
 		this.setFailureProbability(DEFAULT_PROBABILITY);
-		this.setColor(color);
 		this.setMalfunction(null);
 		this.attributes = new Hashtable<String,Object>();
 	}
@@ -155,15 +154,6 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 		if(failureProbability < 0)
 			return false;
 		this.failureProbability = failureProbability;
-		return true;
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public boolean setColor(Color color) {
-		this.color = color;
 		return true;
 	}
 
@@ -284,11 +274,12 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 		}
 		this.arena.update(this, RacerEvent.FINISHED);
 		
-	//	if(!(this.arena.getDisabledRacers().contains(this)))
-			//this.notifyObservers(RacerEvent.FINISHED);
-		//	this.arena.update(this, RacerEvent.FINISHED);
 	}
-	public void getAttributes() {
-		
+	public Hashtable<String,Object> getAttributes() {
+		return this.attributes;
+	}
+	
+	public void addAttribute(String key,Object value) {
+		attributes.put(key, value);
 	}
 }

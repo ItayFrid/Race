@@ -1,8 +1,6 @@
 package game.racers.land;
 
-import game.racers.IWheeled;
 import game.racers.Racer;
-import game.racers.decorator.Wheeled;
 import utilities.EnumContainer.Color;
 import utilities.EnumContainer.BikeType;
 
@@ -12,11 +10,10 @@ import utilities.EnumContainer.BikeType;
  * 			 305437774 305360653
  * @see Racer, LandRacer, Wheeled
  */
-public class Bicycle extends Racer implements LandRacer, IWheeled {
+public class Bicycle extends Racer implements LandRacer {
 	/**
 	 * These are Bicycle class data members
 	 */
-	private Wheeled wheels;
 	private BikeType type;
 	
 	/**

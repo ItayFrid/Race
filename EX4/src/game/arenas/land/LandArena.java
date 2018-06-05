@@ -4,6 +4,7 @@ import game.arenas.Arena;
 import game.arenas.exceptions.RacerLimitException;
 import game.arenas.exceptions.RacerTypeException;
 import game.racers.Racer;
+import game.racers.decorator.WheeledRacer;
 import game.racers.land.*;
 import utilities.EnumContainer.Coverage;
 import utilities.EnumContainer.LandSurface;
@@ -57,7 +58,7 @@ public class LandArena extends Arena {
 	@Override
 	public void addRacer(Racer newRacer) throws RacerTypeException, RacerLimitException {
 		super.addRacer(newRacer);
-		if(!(newRacer instanceof LandRacer))
+		if(!(newRacer instanceof LandRacer) && !(newRacer.getAttributes().containsKey("numOfWheels")))
 			throw new RacerTypeException("Land Arena", newRacer.className());
 		
 		if(this.getNumOfRacers() == this.getMAX_RACERS())

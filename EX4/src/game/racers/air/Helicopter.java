@@ -12,16 +12,14 @@ public class Helicopter extends Racer implements AerialRacer {
 	 * These are class defaults
 	 */
 	private final static double DEFAULT_MAXSPEED = 400;
-	private final static double DEFAULT_ACCLERATION = 50;
-	private final static Color DEFAULT_COLOR = Color.BLUE;
-	
+	private final static double DEFAULT_ACCLERATION = 50;	
 	
 	/**
 	 * The following are Airplane class constructors
 	 * This is the default class constructor
 	 */
 	public Helicopter() {
-		super(null, DEFAULT_MAXSPEED, DEFAULT_ACCLERATION, DEFAULT_COLOR);
+		super(null, DEFAULT_MAXSPEED, DEFAULT_ACCLERATION);
 	}
 	
 	/**
@@ -31,8 +29,8 @@ public class Helicopter extends Racer implements AerialRacer {
 	 * @param acceleration
 	 * @param color
 	 */
-	public Helicopter(String name, double maxSpeed, double acceleration, Color color) {
-		super(name, maxSpeed, acceleration, color);
+	public Helicopter(String name, double maxSpeed, double acceleration) {
+		super(name, maxSpeed, acceleration);
 		if(!(this.setMaxSpeed(maxSpeed)))
 			this.setMaxSpeed(DEFAULT_MAXSPEED);
 		if(!(this.setAcceleration(acceleration)))
@@ -44,6 +42,7 @@ public class Helicopter extends Racer implements AerialRacer {
 	 */
 	@Override
 	public String describeSpecific() {
+		//TODO: Change describeSpecific()
 		return "\n";		//Helicopter class does not have any special properties
 	}
 

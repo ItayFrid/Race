@@ -1,12 +1,9 @@
 
 public class TODO {
 /**
- * TODO Remove Wheeld,Color fields from Racer
- * TODO Add IRacer Interface
- * TODO make Racer Class Implements IRacer
- * TODO Add RacerDecorator Class Implements IRacer
- * TODO Add ColoredRacer,WheeledRacer Classes Inherit from RacerDecorator
+ * TODO Remove todoClass
+ * TODO Remove Wheeled,Color fields from Racer
  * TODO Update addRacer() in landArena to be able to add WheeledRacer
- * TODO Add HashTable to IRacer
+ * TODO Update Racer::Introduce() to print from Hashtable
  */
 }
