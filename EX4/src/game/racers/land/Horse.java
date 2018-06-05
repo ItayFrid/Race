@@ -40,12 +40,6 @@ public class Horse extends Racer implements LandRacer {
 	}
 	
 	@Override
-	public String describeSpecific() {
-		//TODO: Change describeSpecific()
-		return ", Breed: " /*+ this.breed + "\n"*/;
-	}
-
-	@Override
 	public String className() {
 		return "Horse";
 	}

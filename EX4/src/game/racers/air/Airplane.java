@@ -41,16 +41,6 @@ public class Airplane extends Racer implements AerialRacer {
 		if(!(this.setAcceleration(acceleration)))
 			this.setAcceleration(DEFAULT_ACCLERATION);
 	}
-
-	/**
-	 * This function returns a string describing specific racer details
-	 */
-	@Override
-	
-	public String describeSpecific() {
-		//TODO: Change describeSpecific()
-		return "Number of wheels: " /*+ this.wheels.getNumOfWheels() + "\n"*/;
-	}
  
 	/**
 	 * This function returns a string with this class name

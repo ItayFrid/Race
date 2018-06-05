@@ -38,15 +38,6 @@ public class Helicopter extends Racer implements AerialRacer {
 	}
 
 	/**
-	 * This function returns a string describing specific racer details
-	 */
-	@Override
-	public String describeSpecific() {
-		//TODO: Change describeSpecific()
-		return "\n";		//Helicopter class does not have any special properties
-	}
-
-	/**
 	 * This function returns a string with this class name
 	 */
 	@Override

@@ -46,12 +46,6 @@ public class RowBoat extends Racer implements NavalRacer {
 		this.addAttribute("type", DEFAULT_ROWTYPE);
 		this.addAttribute("team", DEFAULT_TEAM);
 	}
-	
-	@Override
-	public String describeSpecific() {
-		//TODO: Change describeSpecific()
-		return "Boat Type: "/* + this.type + ", Team: " + this.team + "\n"*/;
-	}
 
 	@Override
 	public String className() {
