@@ -4,8 +4,7 @@ import game.arenas.Arena;
 import game.arenas.exceptions.RacerLimitException;
 import game.arenas.exceptions.RacerTypeException;
 import game.racers.Racer;
-import game.racers.decorator.WheeledRacer;
-import game.racers.land.*;
+import game.racers.land.LandRacer;
 import utilities.EnumContainer.Coverage;
 import utilities.EnumContainer.LandSurface;
 /**

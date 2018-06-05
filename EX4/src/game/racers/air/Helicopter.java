@@ -1,6 +1,5 @@
 package game.racers.air;
 import game.racers.Racer;
-import utilities.EnumContainer.Color;
 /**
  * This is the Helicopter racer class
  * @author Idan Aharon, Itay Fridman
