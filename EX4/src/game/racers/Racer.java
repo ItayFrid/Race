@@ -14,7 +14,7 @@ import utilities.Point;
  * @author Idan Aharon, Itay Fridman
  * 			 305437774 305360653
  */
-@SuppressWarnings("deprecation")
+
 public abstract class Racer extends Observable implements Runnable {
 
 	/**

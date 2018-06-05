@@ -5,7 +5,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JLabel;
 
@@ -19,7 +18,7 @@ import utilities.Point;
  * 			305437774	305360653
  * @see AerialArena, NavalArena, LandArena
  */
-@SuppressWarnings("deprecation")
+
 public abstract class Arena implements Observer {
 
 	/**
