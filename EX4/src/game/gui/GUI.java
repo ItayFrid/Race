@@ -160,9 +160,9 @@ public class GUI  {
 			Racer newRacer = null;
 			try {
 				if (isWheeled == true) // Building wheeled racer
-					newRacer = builder.buildWheeledRacer(type, name, speed, accel, color, 0);
+					newRacer = builder.buildWheeledRacer(type, name, speed, accel, 0);
 				else // Building non-wheeled racer
-					newRacer = builder.buildRacer(type, name, speed, accel, color);
+					newRacer = builder.buildRacer(type, name, speed, accel);
 			} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
 					| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 
