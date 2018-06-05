@@ -7,5 +7,6 @@ public class TODO {
  * TODO Add RacerDecorator Class Implements IRacer
  * TODO Add ColoredRacer,WheeledRacer Classes Inherit from RacerDecorator
  * TODO Update addRacer() in landArena to be able to add WheeledRacer
+ * TODO Add HashTable to IRacer
  */
 }
