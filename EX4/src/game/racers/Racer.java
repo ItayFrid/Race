@@ -1,8 +1,11 @@
 package game.racers;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Hashtable;
 import java.util.Observable;
 import java.util.Set;
 
+import factory.RaceBuilder;
+import factory.RacingClassesFinder;
 import game.arenas.Arena;
 import game.gui.GUI;
 import utilities.EnumContainer.RacerEvent;
@@ -16,7 +19,7 @@ import utilities.Point;
  * 			 305437774 305360653
  */
 
-public abstract class Racer extends Observable implements Runnable,IRacer {
+public abstract class Racer extends Observable implements Runnable, Cloneable,IRacer {
 
 	/**
 	 * The following are the class data members
@@ -292,5 +295,19 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 	
 	public void addAttribute(String key,Object value) {
 		attributes.put(key, value);
+	}
+	
+	@Override
+	public Racer clone() {
+		int index = RacingClassesFinder.getInstance().getRacersNamesList().indexOf(this.className());
+		String path = RacingClassesFinder.getInstance().getRacersList().get(index);
+		RaceBuilder build = RaceBuilder.getInstance();
+		try {
+			return  build.buildRacer(path, this.name, this.maxSpeed, this.acceleration);
+		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
+				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
