@@ -288,4 +288,7 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 			//this.notifyObservers(RacerEvent.FINISHED);
 		//	this.arena.update(this, RacerEvent.FINISHED);
 	}
+	public void getAttributes() {
+		
+	}
 }
