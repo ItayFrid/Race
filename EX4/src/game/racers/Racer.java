@@ -1,10 +1,10 @@
 package game.racers;
 import java.util.Hashtable;
 import java.util.Observable;
+import java.util.Set;
 
 import game.arenas.Arena;
 import game.gui.GUI;
-import utilities.EnumContainer.Color;
 import utilities.EnumContainer.RacerEvent;
 import utilities.Fate;
 import utilities.Mishap;
@@ -226,7 +226,7 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 	 * This method returns a string describing basic racer details
 	 */
 	public String describeBasics() {
-		return "[" + this.className() + "] Name: " + this.name  + ", Serial Number: " + this.serialNumber + ", Max Speed: " + this.maxSpeed + ", Acceleration: "+ this.acceleration + ", Color: " + this.color +" ";
+		return "[" + this.className() + "] Name: " + this.name  + ", Serial Number: " + this.serialNumber + ", Max Speed: " + this.maxSpeed + ", Acceleration: "+ this.acceleration;
 	}
 	
 	/**
@@ -254,7 +254,16 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 	/**
 	 * The following are all abstract methods
 	 */
-	public abstract String describeSpecific();
+	public String describeSpecific() {
+		String s=" ";
+		Set<String> keys = attributes.keySet();
+		for(String key : keys) {
+			s+=attributes.get(key);
+			s+=" ";
+		}
+		return s;
+	}
+
 	public abstract String className();
 	
 	
