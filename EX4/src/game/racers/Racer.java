@@ -288,7 +288,11 @@ public abstract class Racer extends Observable implements Runnable,IRacer {
 			//this.notifyObservers(RacerEvent.FINISHED);
 		//	this.arena.update(this, RacerEvent.FINISHED);
 	}
-	public void getAttributes() {
-		
+	public Hashtable<String,Object> getAttributes() {
+		return this.attributes;
+	}
+	
+	public void addAttribute(String key,Object value) {
+		attributes.put(key, value);
 	}
 }

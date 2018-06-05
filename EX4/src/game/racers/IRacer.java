@@ -3,5 +3,5 @@ package game.racers;
 
 
 public interface IRacer {
-	public void addAttribute(String string,Object object);
+	public void addAttribute(String key,Object value);
 }
