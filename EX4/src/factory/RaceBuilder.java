@@ -41,24 +41,24 @@ public class RaceBuilder {
 	/**
 	 * This method dynamically loads a general racer
 	 */
-	public Racer buildRacer(String racerType, String name, double maxSpeed, double acceleration, Color color) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public Racer buildRacer(String racerType, String name, double maxSpeed, double acceleration) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		ClassLoader cl = ClassLoader.getSystemClassLoader();
 		Class<?> c;
 		Constructor<?> con;
 		c = cl.loadClass(racerType);
-		 con = c.getConstructor(String.class, double.class, double.class, Color.class);
-		 return (Racer)con.newInstance(name, maxSpeed, acceleration, color);
+		 con = c.getConstructor(String.class, double.class, double.class);
+		 return (Racer)con.newInstance(name, maxSpeed, acceleration);
 	}
 	
 	/**
 	 * This method dynamically loads a wheeled racer
 	 */
-	public Racer buildWheeledRacer(String racerType, String name, double maxSpeed, double acceleration, Color color, int numOfWheels) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public Racer buildWheeledRacer(String racerType, String name, double maxSpeed, double acceleration, int numOfWheels) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		ClassLoader cl = ClassLoader.getSystemClassLoader();
 		Class<?> c;
 		Constructor<?> con;
 		c = cl.loadClass(racerType);
-		 con = c.getConstructor(String.class, double.class, double.class, Color.class, int.class);
-		 return (Racer)con.newInstance(name, maxSpeed, acceleration, color, numOfWheels);
+		 con = c.getConstructor(String.class, double.class, double.class, int.class);
+		 return (Racer)con.newInstance(name, maxSpeed, acceleration, numOfWheels);
 	}
 }
