@@ -32,7 +32,7 @@ public class Car extends Racer implements LandRacer {
 	 * @param maxSpeed
 	 * @param acceleration
 	 */
-	public Car(String name, double maxSpeed, double acceleration, Color color) {
+	public Car(String name, double maxSpeed, double acceleration) {
 		super(name, maxSpeed, acceleration);
 		this.addAttribute("engine", DEFAULT_ENGINE);
 		if(!(this.setMaxSpeed(maxSpeed)))
