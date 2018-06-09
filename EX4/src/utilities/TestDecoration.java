@@ -12,11 +12,10 @@ import game.racers.decorator.WheeledRacer;
 import game.racers.land.Car;
 import game.racers.naval.SpeedBoat;
 import utilities.EnumContainer.Color;
-import utilities.Fate;
 
 public class TestDecoration {
 
-	public static void main(String[ ] args) {
+	public static void main(String[] args) {
 
 		// General decoration
 
@@ -76,6 +75,7 @@ public class TestDecoration {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		a.initRace();
 		a.showResults();
 		try {
 			System.out.println("Strat Race");
