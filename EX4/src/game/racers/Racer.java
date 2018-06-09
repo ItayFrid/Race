@@ -1,10 +1,10 @@
 package game.racers;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Observable;
 import java.util.Set;
 
 import game.arenas.Arena;
-import utilities.EnumContainer.RacerEvent;
 import utilities.Fate;
 import utilities.Mishap;
 import utilities.Point;
@@ -268,7 +268,7 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 	 * The following are all abstract methods
 	 */
 	public String describeSpecific() {
-		String s=" ";
+		String s=", ";
 		Set<String> keys = attributes.keySet();
 		for(String key : keys) {
 			s+=key;
@@ -302,7 +302,11 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 	}
 	
 	public void addAttribute(String key,Object value) {
-		attributes.put(key, value);
+		if(!attributes.containsKey(key)) {
+			attributes.put(key, new ArrayList<Object>());
+		}
+		ArrayList<Object> a = (ArrayList)attributes.get(key);
+		a.add(value);
 	}
 	
 	@Override
