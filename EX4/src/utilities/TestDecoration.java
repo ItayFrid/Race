@@ -42,7 +42,7 @@ public class TestDecoration {
 		try {
 			a.addRacer(r1);
 		} catch (RacerLimitException | RacerTypeException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -51,7 +51,7 @@ public class TestDecoration {
 		try {
 			a.addRacer(r2);
 		} catch (RacerLimitException | RacerTypeException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -61,7 +61,7 @@ public class TestDecoration {
 		try {
 			a.addRacer(r3);
 		} catch (RacerLimitException | RacerTypeException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -72,7 +72,7 @@ public class TestDecoration {
 		try {
 			a.addRacer(r4);
 		} catch (RacerLimitException | RacerTypeException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 		a.initRace();
