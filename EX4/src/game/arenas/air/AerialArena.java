@@ -67,16 +67,17 @@ public class AerialArena extends Arena {
 	  * @exception If racer type dosen't match arena or if max racers limit has been reached
 	  */
 	@Override
-	public void addRacer(Racer newRacer) throws RacerTypeException, RacerLimitException {
+	public void addRacer(IRacer newRacer) throws RacerTypeException, RacerLimitException {
 		super.addRacer(newRacer);
-		if(!(newRacer instanceof AerialRacer))
-			throw new RacerTypeException("Aerial Arena", newRacer.className());
+		Racer racer = (Racer)newRacer;
+		if(!(racer instanceof AerialRacer))
+			throw new RacerTypeException("Aerial Arena", racer.className());
 		
 		if(this.getNumOfRacers() == this.getMAX_RACERS())
-			throw new RacerLimitException(this.getMAX_RACERS(), newRacer.getSerialNumber());
+			throw new RacerLimitException(this.getMAX_RACERS(), racer.getSerialNumber());
 		
-		this.activeRacers.add(newRacer);
-		this.allRacers.add(newRacer);
+		this.activeRacers.add(racer);
+		this.allRacers.add(racer);
 	}
 
 	/**

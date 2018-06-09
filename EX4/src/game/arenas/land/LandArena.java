@@ -3,6 +3,7 @@ package game.arenas.land;
 import game.arenas.Arena;
 import game.arenas.exceptions.RacerLimitException;
 import game.arenas.exceptions.RacerTypeException;
+import game.racers.IRacer;
 import game.racers.Racer;
 import game.racers.land.LandRacer;
 import utilities.EnumContainer.Coverage;
@@ -55,16 +56,17 @@ public class LandArena extends Arena {
 	  * @exception If racer type dosen't match arena or if max racers limit has been reached
 	  */
 	@Override
-	public void addRacer(Racer newRacer) throws RacerTypeException, RacerLimitException {
+	public void addRacer(IRacer newRacer) throws RacerTypeException, RacerLimitException {
 		super.addRacer(newRacer);
-		if(!(newRacer instanceof LandRacer) && !(newRacer.getAttributes().containsKey("numOfWheels")))
-			throw new RacerTypeException("Land Arena", newRacer.className());
+		Racer racer = (Racer)newRacer;
+		if(!(racer instanceof LandRacer) && !(racer.getAttributes().containsKey("numOfWheels")))
+			throw new RacerTypeException("Land Arena", racer.className());
 		
 		if(this.getNumOfRacers() == this.getMAX_RACERS())
-			throw new RacerLimitException(this.getMAX_RACERS(), newRacer.getSerialNumber());
+			throw new RacerLimitException(this.getMAX_RACERS(), racer.getSerialNumber());
 		
-		this.activeRacers.add(newRacer);
-		this.allRacers.add(newRacer);
+		this.activeRacers.add(racer);
+		this.allRacers.add(racer);
 
 	}
 	

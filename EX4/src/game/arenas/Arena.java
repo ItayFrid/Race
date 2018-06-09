@@ -139,8 +139,9 @@ public abstract class Arena implements Observer {
 		return this.threadPool;
 	}
 	
-	public void addRacer(Racer newRacer) throws RacerTypeException, RacerLimitException{
-		newRacer.setCurrentLocation(new Point(0,MIN_Y_GAP*activeRacers.size()));
+	public void addRacer(IRacer newRacer) throws RacerTypeException, RacerLimitException{
+		Racer racer = (Racer)newRacer;
+		racer.setCurrentLocation(new Point(0,MIN_Y_GAP*activeRacers.size()));
 	}
 	
 	/**
@@ -157,7 +158,7 @@ public abstract class Arena implements Observer {
 	/**
 	 * This method creates a thread pool of all racers and starts a race
 	 */
-	public void startRace() {
+	public void startRace() throws InterruptedException {
 		this.threadPool = Executors.newFixedThreadPool(this.activeRacers.size());
 		for(int i = 0; i<this.activeRacers.size(); i++)
 			threadPool.execute(this.activeRacers.get(i));

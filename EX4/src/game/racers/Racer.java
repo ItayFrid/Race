@@ -7,7 +7,6 @@ import java.util.Set;
 import factory.RaceBuilder;
 import factory.RacingClassesFinder;
 import game.arenas.Arena;
-import game.gui.GUI;
 import utilities.EnumContainer.RacerEvent;
 import utilities.Fate;
 import utilities.Mishap;
@@ -220,7 +219,6 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 			else
 				this.currentLocation.setX(this.currentLocation.getX() + this.currentSpeed);	//Moving forward
 		}
-		GUI.updateImageRacer(this);
 		return this.currentLocation;
 		
 	}
