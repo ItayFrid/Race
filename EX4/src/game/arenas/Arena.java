@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JLabel;
 
@@ -163,6 +164,7 @@ public abstract class Arena implements Observer {
 		for(int i = 0; i<this.activeRacers.size(); i++)
 			threadPool.execute(this.activeRacers.get(i));
 		this.threadPool.shutdown();
+		this.threadPool.awaitTermination(10, TimeUnit.SECONDS);
 
 	}
 	/**
@@ -179,7 +181,7 @@ public abstract class Arena implements Observer {
 	 */
 	public void showResults() {
 		for(int i = 0; i < this.completedRacers.size(); i++) {
-			System.out.print("#" + i + " -> " + this.completedRacers.get(i).describeRacer());
+			System.out.println("#" + (i+1) + " -> " + this.completedRacers.get(i).describeRacer());
 		}
 			
 	}
@@ -193,8 +195,10 @@ public abstract class Arena implements Observer {
 	public synchronized void update(Observable racer, Object event) {
 		event = (RacerEvent) event;
 		if(event == RacerEvent.FINISHED) {
-			this.completedRacers.add((Racer)racer);
-			this.activeRacers.remove((Racer) racer);
+			if(!this.completedRacers.contains(racer)) {
+				this.completedRacers.add((Racer)racer);
+				this.activeRacers.remove((Racer) racer);
+			}
 		}
 		else if(event == RacerEvent.DISABLED) {
 			this.disabledRacers.add((Racer)racer);
