@@ -1,16 +1,18 @@
 package game.racers;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Hashtable;
 import java.util.Observable;
 import java.util.Set;
 
-import factory.RaceBuilder;
-import factory.RacingClassesFinder;
 import game.arenas.Arena;
 import utilities.EnumContainer.RacerEvent;
 import utilities.Fate;
 import utilities.Mishap;
 import utilities.Point;
+import utilities.state.Active;
+import utilities.state.Broken;
+import utilities.state.Completed;
+import utilities.state.Disabled;
+import utilities.state.IState;
 
 /**
  * This is the Racer class, an abstract class
@@ -32,7 +34,8 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 	private double acceleration;
 	private double currentSpeed;
 	private double failureProbability;
-
+	private IState state;
+	
 	private Mishap malfunction;
 	private Hashtable<String,Object> attributes;
 	
@@ -180,6 +183,7 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 		this.setArena(arena);
 		this.setCurrentLocation(start);
 		this.setFinish(finish);
+		this.state = new Active();
 	}
 	
 	/**
@@ -198,16 +202,21 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 		if(this.malfunction != null) {		//If there's a mishap
 			if(this.malfunction.isFixable() == true && this.malfunction.getTurnsToFix() == 0) {		//If mishap has ended
 				this.malfunction = null;
-				this.notifyObservers(RacerEvent.REPAIRED);
-				this.arena.update(this, RacerEvent.REPAIRED);
+				this.setState(new Active());
+				this.notifyObservers(this.state);
+				this.arena.update(this, this.state);
 			}
 			else if(!(this.malfunction.isFixable())) {
-				this.notifyObservers(RacerEvent.DISABLED);
-				this.arena.update(this, RacerEvent.DISABLED);
+				this.setState(new Disabled());
+				this.notifyObservers(this.state);
+				this.arena.update(this, this.state);
 			}
 			else if(this.malfunction.isFixable() == true && this.malfunction.getTurnsToFix() > 0) {
 				addition *= this.malfunction.getReductionFactor();
 				this.malfunction.nextTurn();
+				this.setState(new Broken());
+				this.notifyObservers(this.state);
+				this.arena.update(this, this.state);
 			}
 		}
 		
@@ -215,7 +224,9 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 			this.setCurrentSpeed(this.currentSpeed + (addition));	//Increasing speed
 			if(this.currentLocation.getX() + this.currentSpeed>=this.arena.getLength()) {
 				this.currentLocation.setX(this.arena.getLength());
-				this.arena.update(this, RacerEvent.FINISHED);
+				this.state = new Completed();
+				this.notifyObservers(this.state);
+				this.arena.update(this, this.state);
 			}
 			else
 				this.currentLocation.setX(this.currentLocation.getX() + this.currentSpeed);	//Moving forward
@@ -285,8 +296,6 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 			}
 				
 		}
-		this.arena.update(this, RacerEvent.FINISHED);
-		
 	}
 	public Hashtable<String,Object> getAttributes() {
 		return this.attributes;
@@ -320,5 +329,8 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 		Racer newCopy = cloneRacer.clone();
 		newCopy.addAttribute(key, value);
 		return newCopy;
+	}
+	public void setState(IState state) {
+		this.state = state;
 	}
 }

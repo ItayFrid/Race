@@ -9,10 +9,15 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JLabel;
 
-import game.arenas.exceptions.*;
-import game.racers.*;
-import utilities.EnumContainer.RacerEvent;
+import game.arenas.exceptions.RacerLimitException;
+import game.arenas.exceptions.RacerTypeException;
+import game.racers.IRacer;
+import game.racers.Racer;
 import utilities.Point;
+import utilities.state.Broken;
+import utilities.state.Completed;
+import utilities.state.Disabled;
+import utilities.state.IState;
 /**
  * This is the Arena class
  * @author Idan Aharon, Itay Fridman
@@ -192,27 +197,9 @@ public abstract class Arena implements Observer {
 	 * This methods handles notifications from racers to the arena
 	 */
 	@Override
-	public synchronized void update(Observable racer, Object event) {
-		event = (RacerEvent) event;
-		if(event == RacerEvent.FINISHED) {
-			if(!this.completedRacers.contains(racer)) {
-				this.completedRacers.add((Racer)racer);
-				this.activeRacers.remove((Racer) racer);
-			}
-		}
-		else if(event == RacerEvent.DISABLED) {
-			this.disabledRacers.add((Racer)racer);
-			this.activeRacers.remove(((Racer)racer));
-		}
-		else if(event == RacerEvent.BROKENDOWN) {
-			this.brokenRacers.add(((Racer)racer));
-			this.activeRacers.remove(((Racer)racer));
-		}
-		else {		// event == RacerEvent.REPAIRED
-			this.activeRacers.add(((Racer)racer));
-			this.brokenRacers.remove(((Racer)racer));
-		}
-		
+	public synchronized void update(Observable racer, Object s) {
+		IState state = (IState)s;
+		state.action((Racer)racer);
 	}
 	
 	/**
