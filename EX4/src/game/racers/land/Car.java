@@ -1,7 +1,6 @@
 package game.racers.land;
 
 import game.racers.Racer;
-import utilities.EnumContainer.Color;
 import utilities.EnumContainer.Engine;
 
 /**

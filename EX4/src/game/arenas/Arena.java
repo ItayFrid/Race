@@ -14,9 +14,6 @@ import game.arenas.exceptions.RacerTypeException;
 import game.racers.IRacer;
 import game.racers.Racer;
 import utilities.Point;
-import utilities.state.Broken;
-import utilities.state.Completed;
-import utilities.state.Disabled;
 import utilities.state.IState;
 /**
  * This is the Arena class
@@ -25,6 +22,7 @@ import utilities.state.IState;
  * @see AerialArena, NavalArena, LandArena
  */
 
+@SuppressWarnings("deprecation")
 public abstract class Arena implements Observer {
 
 	/**

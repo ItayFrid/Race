@@ -1,9 +1,9 @@
 package factory;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import game.arenas.*;
-import game.racers.*;
-import utilities.EnumContainer.Color;
+
+import game.arenas.Arena;
+import game.racers.Racer;
 
 /**
  * This is the RaceBuilder class

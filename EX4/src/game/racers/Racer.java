@@ -20,6 +20,7 @@ import utilities.state.IState;
  * 			 305437774 305360653
  */
 
+@SuppressWarnings("deprecation")
 public abstract class Racer extends Observable implements Runnable, Cloneable,IRacer {
 
 	/**
@@ -305,7 +306,8 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 		if(!attributes.containsKey(key)) {
 			attributes.put(key, new ArrayList<Object>());
 		}
-		ArrayList<Object> a = (ArrayList)attributes.get(key);
+		@SuppressWarnings("unchecked")
+		ArrayList<Object> a = (ArrayList<Object>)attributes.get(key);
 		a.add(value);
 	}
 	
