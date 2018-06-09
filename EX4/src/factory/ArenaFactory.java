@@ -9,14 +9,12 @@ public class ArenaFactory {
 
 	public Arena getArena(String arenaType) {
 		Arena newArena = null;
-		switch(arenaType) {
-		case "Land": newArena = new LandArena();
-		break;
-		case "Navy": newArena = new NavalArena();
-		break;
-		case "Air": newArena = new AerialArena();
-		break;
-		}
+		if(arenaType.equals("Land"))
+			newArena = new LandArena();
+		else if(arenaType.equals("Navy"))
+			newArena = new NavalArena();
+		else if(arenaType.equals("Air"))
+			newArena = new AerialArena();
 		return newArena;
 	}
 }

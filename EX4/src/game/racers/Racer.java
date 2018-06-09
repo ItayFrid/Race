@@ -299,15 +299,14 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 	
 	@Override
 	public Racer clone() {
-		int index = RacingClassesFinder.getInstance().getRacersNamesList().indexOf(this.className());
-		String path = RacingClassesFinder.getInstance().getRacersList().get(index);
-		RaceBuilder build = RaceBuilder.getInstance();
+		Racer clonedRacer = null;
 		try {
-			return  build.buildRacer(path, this.name, this.maxSpeed, this.acceleration);
-		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
-				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			clonedRacer = (Racer) super.clone();
+		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
+		clonedRacer.setSerialNumber();
+		return clonedRacer;
 	}
 }
