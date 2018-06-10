@@ -1,5 +1,6 @@
 package game.arenas;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -13,6 +14,7 @@ import game.arenas.exceptions.RacerLimitException;
 import game.arenas.exceptions.RacerTypeException;
 import game.racers.IRacer;
 import game.racers.Racer;
+import utilities.DaemonThread;
 import utilities.Point;
 import utilities.state.IState;
 /**
@@ -40,7 +42,8 @@ public abstract class Arena implements Observer {
 	private ExecutorService threadPool;
 	protected ArrayList<Racer> allRacers;
 	private ArrayList<JLabel> imageRacers;
-
+	private Timestamp timestamp;
+	private DaemonThread daemon;
 	
 	public final static String ICON_PATH = "/game/gui/icons/";
 	
@@ -57,9 +60,12 @@ public abstract class Arena implements Observer {
 		this.disabledRacers = new ArrayList<Racer>();
 		this.allRacers = new ArrayList<Racer>();
 		this.imageRacers = new ArrayList<JLabel>();
+		
 		this.FRICTION = friction;
 		this.MAX_RACERS = maxRacers;
 		this.setLength(length);
+		this.timestamp = null;
+		this.daemon = new DaemonThread(this.allRacers);
 	}
 	
 	/**
@@ -77,6 +83,8 @@ public abstract class Arena implements Observer {
 		this.FRICTION = other.getFRICTION();
 		this.MAX_RACERS = other.getMAX_RACERS();
 		this.setLength(other.getLength());
+		this.timestamp = null;
+		this.daemon = new DaemonThread(this.allRacers);
 	}
 	
 	
@@ -163,9 +171,11 @@ public abstract class Arena implements Observer {
 	 * This method creates a thread pool of all racers and starts a race
 	 */
 	public void startRace() throws InterruptedException {
+		this.timestamp = new Timestamp(System.currentTimeMillis());
 		this.threadPool = Executors.newFixedThreadPool(this.activeRacers.size());
 		for(int i = 0; i<this.activeRacers.size(); i++)
 			threadPool.execute(this.activeRacers.get(i));
+		this.daemon.run();
 		this.threadPool.shutdown();
 		this.threadPool.awaitTermination(10, TimeUnit.SECONDS);
 
@@ -204,4 +214,8 @@ public abstract class Arena implements Observer {
 	 * Abstract methods to be implemented by all inheriting classes
 	 */
 	public abstract String className();
+	
+	public Timestamp getTime() {
+		return this.timestamp;
+	}
 }

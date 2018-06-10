@@ -21,7 +21,7 @@ import utilities.state.IState;
  */
 
 @SuppressWarnings("deprecation")
-public abstract class Racer extends Observable implements Runnable, Cloneable,IRacer {
+public abstract class Racer extends Observable implements Runnable, Cloneable,IRacer,Comparable<Racer> {
 
 	/**
 	 * The following are the class data members
@@ -197,7 +197,7 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 		if(this.malfunction == null) {			//If there is no mishap
 			if(Fate.breakDown(this.failureProbability) == true) {		//Rolling for a new mishap
 				this.malfunction = Fate.generateMishap();	//Generating a new mishap
-				System.out.println(this.name + "had a new mishap " + this.malfunction);
+				System.out.println(this.name + " had a new mishap " + this.malfunction);
 			}
 		}
 		if(this.malfunction != null) {		//If there's a mishap
@@ -336,7 +336,19 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 		newCopy.addAttribute(key, value);
 		return newCopy;
 	}
+	/**
+	 * sets the State of the racer
+	 * @param state - the state of the racer(Active,Disabled,Broken,Completed)
+	 */
 	public void setState(IState state) {
 		this.state = state;
+	}
+	
+	/**
+	 * Implementing the Comperable Interface for sorting the racers
+	 */
+	@Override
+	public int compareTo(Racer racer) {
+		return (int)(this.getCurrentLocation().getX() - racer.getCurrentLocation().getX());
 	}
 }

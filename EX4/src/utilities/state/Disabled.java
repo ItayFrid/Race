@@ -9,6 +9,7 @@ public class Disabled implements IState {
 		if(!racer.getArena().getDisabledRacers().contains((Racer)racer))
 			racer.getArena().getDisabledRacers().add((Racer)racer);
 		racer.getArena().getActiveRacers().remove(((Racer)racer));
+		System.out.println(racer.getName() + " failed to finish");
 	}
 
 }

@@ -8,5 +8,6 @@ public class Completed implements IState {
 		if(!racer.getArena().getCompletedRacers().contains(racer))
 			racer.getArena().getCompletedRacers().add((Racer)racer);
 		racer.getArena().getActiveRacers().remove((Racer) racer);
+		System.out.println(racer.getName() + " had finished!");
 	}
 }
