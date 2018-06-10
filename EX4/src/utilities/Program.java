@@ -1,5 +1,6 @@
 package utilities;
 import java.util.Scanner;
+
 import factory.CarRaceBuilder;
 import game.racers.air.*;
 import game.racers.decorator.ColoredRacer;
