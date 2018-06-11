@@ -321,21 +321,18 @@ public abstract class Racer extends Observable implements Runnable, Cloneable,IR
 			return null;
 		}
 		clonedRacer.setSerialNumber();
+		clonedRacer.setName(clonedRacer.getDefaultName());
+		clonedRacer.setCurrentLocation(new Point(this.currentLocation));
+		if(this.finish != null)
+			clonedRacer.setFinish(new Point(this.finish));
+		clonedRacer.attributes = new Hashtable<String,Object>();
+		Set<String> keys = this.attributes.keySet();
+		for(String key : keys) {
+			clonedRacer.attributes.put(key, this.attributes.get(key));
+		}
 		return clonedRacer;
 	}
 	
-	/**
-	 * This method offers a shorter way to make a copy of a racer with new changes
-	 * @param cloneRacer - Racer to be cloned
-	 * @param key - String containing the attribute name
-	 * @param value	- The value of the new attribute
-	 * @return	- New modified copy of given racer
-	 */
-	public Racer Prototype(Racer cloneRacer, String key, Object value) {
-		Racer newCopy = cloneRacer.clone();
-		newCopy.addAttribute(key, value);
-		return newCopy;
-	}
 	/**
 	 * sets the State of the racer
 	 * @param state - the state of the racer(Active,Disabled,Broken,Completed)

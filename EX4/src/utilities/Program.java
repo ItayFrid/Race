@@ -1,6 +1,6 @@
 package utilities;
 import java.util.Scanner;
-
+import utilities.Fate;
 import factory.CarRaceBuilder;
 import game.racers.air.*;
 import game.racers.decorator.ColoredRacer;
@@ -16,12 +16,13 @@ import game.arenas.land.LandArena;
 import game.arenas.naval.NavalArena;
 import game.racers.Racer;
 public class Program {
-
+	
 	private static Scanner input = new Scanner(System.in);
 	private static Arena activeArena = null;
 	
 	public static void main(String [] args) {
 		int option;
+		Fate.setSeed(305437774);
 		System.out.println("Welcome to race simulator!");
 		do {
 			printMenu();
