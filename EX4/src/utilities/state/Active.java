@@ -12,7 +12,7 @@ public class Active implements IState {
 			racer.getArena().getActiveRacers().add(((Racer)racer));
 		racer.getArena().getBrokenRacers().remove(((Racer)racer));
 		
-		System.out.println(racer.getName() + " is active again, in place: #" + location);
+		System.out.println(racer.getName() + " is active again, in place: #" + (location + 1));
 	}
 
 }

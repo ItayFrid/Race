@@ -175,10 +175,10 @@ public class Program {
 		
 		do {
 			option = input.nextInt();
-			if(((option - 1) < 0) || ((option - 1) > (activeArena.getActiveRacers().size()) - 1) )
-				System.out.println("Invalid input! Try again.");
 			if(option == 0)
 				return null;
+			if(((option - 1) < 0) || ((option - 1) > (activeArena.getActiveRacers().size()) - 1) )
+				System.out.println("Invalid input! Try again.");
 		}while(((option - 1) < 0) || ((option - 1) > (activeArena.getActiveRacers().size()) - 1));
 		
 		return activeArena.getActiveRacers().get(option - 1);
