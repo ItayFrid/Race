@@ -7,7 +7,6 @@ import utilities.EnumContainer.Team;
 /**
  * This is the RowBoat racer class
  * @author Idan Aharon, Itay Fridman
- * 			 305437774 305360653
  * @see Racer, NavalRacer
  */
 public class RowBoat extends Racer implements NavalRacer {
