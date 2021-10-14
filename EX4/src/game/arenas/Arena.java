@@ -20,7 +20,6 @@ import utilities.state.IState;
 /**
  * This is the Arena class
  * @author Idan Aharon, Itay Fridman
- * 			305437774	305360653
  * @see AerialArena, NavalArena, LandArena
  */
 
