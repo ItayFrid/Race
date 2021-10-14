@@ -6,7 +6,6 @@ import utilities.EnumContainer.BikeType;
 /**
  * This is the Bicycle racer class
  * @author Idan Aharon, Itay Fridman
- * 			 305437774 305360653
  * @see Racer, LandRacer
  */
 public class Bicycle extends Racer implements LandRacer {
