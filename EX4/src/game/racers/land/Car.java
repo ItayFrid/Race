@@ -6,7 +6,6 @@ import utilities.EnumContainer.Engine;
 /**
  * This is the Car racer class
  * @author Idan Aharon, Itay Fridman
- * 			 305437774 305360653
  * @see Racer, LandRacer, Wheeled
  */
 public class Car extends Racer implements LandRacer {	
