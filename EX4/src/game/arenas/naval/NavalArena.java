@@ -13,7 +13,6 @@ import utilities.EnumContainer.WaterSurface;
 /**
  * This is the Naval Arena class
  * @author Idan Aharon, Itay Fridman
- * 			305437774	305360653
  * @see Arena class
  */
 public class NavalArena extends Arena {
