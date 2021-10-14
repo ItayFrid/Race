@@ -11,7 +11,6 @@ import utilities.EnumContainer.LandSurface;
 /**
  * This is the Land Arena class
  * @author Idan Aharon, Itay Fridman
- * 			305437774	305360653
  * @see Arena class
  */
 public class LandArena extends Arena {
