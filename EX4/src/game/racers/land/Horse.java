@@ -5,7 +5,6 @@ import utilities.EnumContainer.Breed;
 /**
  * This is the Horse racer class
  * @author Idan Aharon, Itay Fridman
- * 			 305437774 305360653
  * @see Racer, LandRacer
  */
 public class Horse extends Racer implements LandRacer {
