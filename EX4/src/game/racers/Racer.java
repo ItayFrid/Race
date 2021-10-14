@@ -17,7 +17,6 @@ import utilities.state.IState;
 /**
  * This is the Racer class, an abstract class
  * @author Idan Aharon, Itay Fridman
- * 			 305437774 305360653
  */
 
 @SuppressWarnings("deprecation")
