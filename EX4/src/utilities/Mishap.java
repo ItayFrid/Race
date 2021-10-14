@@ -3,7 +3,6 @@ package utilities;
  * This is the Mishap class
  * this class represents a malfunction in a racer
  * @author Idan Aharon, Itay Fridman
- * 			 305437774 305360653
  * @see Fate, Racer
  */
 public class Mishap {
