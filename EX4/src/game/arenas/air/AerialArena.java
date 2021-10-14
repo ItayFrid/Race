@@ -12,7 +12,6 @@ import utilities.EnumContainer.Wind;
  * This is the AerialArena class
  * @see Arena class
  * @author Idan Aharon, Itay Fridman
- * 			305437774	305360653
  */
 public class AerialArena extends Arena {
 	/**
