@@ -9,7 +9,6 @@ import game.racers.Racer;
  * This is the RaceBuilder class
  * it is used to dynamically load arenas/racers using java reflection
  * @author Idan Aharon, Itay Fridman
- * 			305437774	305360653
  * @see Arena, Racer
  */
 /**/
